@@ -138,8 +138,8 @@ class UserCard:
 		# 				<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>
 		# 				</table></body></html>""" % tilehtml)
 		# subprocess.call(["phantomjs", "rasterize.js", "foo.html", "foo.png", "750px*750px"])
-		subprocess.call(["phantomjs", "rasterize.js", "http://localhost:5000/card/"+self.user['screen_name']+"?fortwitter", "foo.png", "750px*870px"])
-		with open("foo.png") as fh:
+		subprocess.call(["phantomjs", "rasterize.js", "http://iasbingo.com/card/"+self.user['screen_name']+"?fortwitter", '/tmp/boards/'+self.user['screen_name']+"-board.png", "750px*870px"])
+		with open('/tmp/boards/'+self.user['screen_name']+"-board.png") as fh:
 			img_data = fh.read()
 		return img_data
 
