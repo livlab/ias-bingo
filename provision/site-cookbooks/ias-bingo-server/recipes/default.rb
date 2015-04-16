@@ -205,7 +205,7 @@ python_pip 'six' do
 end
 
 python_pip 'twitter' do
-  version '1.14.3'
+  version '1.16.0'
   virtualenv virtual_env_path
 end
 
