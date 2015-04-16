@@ -258,7 +258,7 @@ ul li {
     .bingo_grid li:nth-child(5n) {
       margin-right: 0px; }
     .bingo_grid li:nth-child(13) {
-      background-image: url("../siteart/star.svg"), url("../siteart/lightpaperfibers_@2X.png");
+      background-image: url("../siteart/bear-walking.svg"), url("../siteart/lightpaperfibers_@2X.png");
       background-size: 70%, 300px 500px;
       background-repeat: no-repeat, repeat;
       background-position: center center; }
