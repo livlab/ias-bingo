@@ -162,3 +162,45 @@ Host ias-bingo-server
 6. Update the `provision/data_bags/passwords/mysql.json` file to set your own password
 7. `knife solo prepare root@ias-bingo-server`
 8. `knife solo cook root@ias-bingo-server`
+
+## Common Server Actions ##
+
+### Update from the git repo (root) ###
+
+```bash
+$ cd /u/apps/ias-bingo/current
+$ git pull origin master
+$ restart ias-bingo-server
+$ restart ias-bingo-daemon
+```
+
+### Tail the log files for errors (root) ###
+
+```bash
+$ tail -f /var/log/upstart/ias-bingo-server
+```
+
+and for the daemon:
+
+```bash
+$ tail -f /var/log/upstart/ias-bingo-daemon
+```
+
+### Clear the whole database of data (deploy) ###
+
+```bash
+cat /u/apps/ias-bingo/current/config.json # get the deploy user mysql password
+mysql -u deploy -h 127.0.0.1 -P 3306 -p ias_bingo_production
+
+truncate daub_tweets;
+truncate goals;
+truncate user_card_squares;
+truncate users;
+```
+
+### Load goals (deploy) ###
+
+```bash
+. /u/apps/ias-bingo/shared/ve/bin/activate
+python load_goals.py iasbingo.csv
+```
