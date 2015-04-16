@@ -169,11 +169,11 @@ class InputTweet:
 			else:
 				pass # ignore
 		elif len(self.getHashtags()) == 0:
-			self.sendReply("Did you mean to add a hashtag? I can't mark your card without one!")
+			self.sendReply("Did you mean to add a hashtag? I can't fill out your card without one!")
 		elif tagged_goal is None:
-			self.sendReply("Whoops, that one's not on your card.")
+			self.sendReply("Whoops, that one's not on your card!")
 		elif self.user_card.goalDaubed(tagged_goal):
-			self.sendReply("Looks like you've already spotted #%s"%tagged_goal)
+			self.sendReply("Looks like you've already spotted #%s."%tagged_goal)
 		else:
 			had_bingo = self.user_card.hasBingo()
 			self.user_card.markSquare(tagged_goal,self)
