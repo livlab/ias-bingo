@@ -146,6 +146,8 @@ class UserCard:
 class InputTweet:
 	def __init__(self, t):
 		self.t = t
+		if self.isFromUs():
+			return # ignore our own
 		if self.isRetweet():
 			return # ignore
 		if not self.mentionsUs():
@@ -214,6 +216,9 @@ class InputTweet:
 			if m['indices'][0]==0 and m['screen_name'] == config['twitter']['screen_name']:
 				return True
 		return False
+
+	def isFromUs(self):
+		return (self.getScreenName() == config['twitter']['screen_name'])
 
 	def getID(self):
 		return self.t['id']
